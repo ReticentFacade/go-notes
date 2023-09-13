@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Gopher_GetGopher_FullMethodName = "/gopher.Gopher/GetGopher"
+	Gopher_GetGopher_FullMethodName = "/grpc_test.Gopher/GetGopher"
 )
 
 // GopherClient is the client API for Gopher service.
@@ -98,7 +98,7 @@ func _Gopher_GetGopher_Handler(srv interface{}, ctx context.Context, dec func(in
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Gopher_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "gopher.Gopher",
+	ServiceName: "grpc_test.Gopher",
 	HandlerType: (*GopherServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
