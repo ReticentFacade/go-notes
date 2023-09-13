@@ -1,6 +1,8 @@
 syntax = "proto3";
 package gopher;
 
+option go_package = "github.com/ReticentFacade/go-notes/grpc-test";
+
 // Gopher service definition:
 service Gopher {
     // Get Gopher URL
