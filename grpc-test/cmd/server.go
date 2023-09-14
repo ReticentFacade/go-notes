@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net"
 	"net/http"
@@ -34,7 +34,7 @@ var serverCmd = &cobra.Command{
 	Use:   "server",
 	Short: "Sets up Gopher server",
 	Long:  `Gopher server written in Golang`,
-	Run: func(cmd *cobra.Command, args []string) {
+	Run: func(_ *cobra.Command, _ []string) {
 		fmt.Println("server called...")
 		lis, err := net.Listen("tcp", port)
 		if err != nil {
@@ -45,7 +45,7 @@ var serverCmd = &cobra.Command{
 
 		// Register new services:
 		pb.RegisterGopherServer(grpcServer, &Server{})
-		log.Println("GRPC server listening on: %v", lis.Addr())
+		log.Printf("gRPC server listening on: %v", lis.Addr())
 
 		if err := grpcServer.Serve(lis); err != nil {
 			log.Fatal("failed to serve:%w", err)
@@ -78,7 +78,7 @@ func (s *Server) GetGopher(ctx context.Context, req *pb.GopherRequest) (*pb.Goph
 
 	if response.StatusCode == 200 {
 		// Transform our response to a []byte
-		body, err := ioutil.ReadAll(response.Body)
+		body, err := io.ReadAll(response.Body)
 		if err != nil {
 			log.Fatalf("failed to read response body: %v", err)
 		}
