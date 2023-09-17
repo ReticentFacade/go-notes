@@ -3,8 +3,8 @@ use std::ffi::CStr;
 
 #[no_mangle]
 pub extern "C" fn hello(name: *const libc::c_char) {
-    let name_cstr = unsafe { CStr::from_ptr(name)};
-    let name = name_cstr.to_str().unwrap();
+    let name_cstr = unsafe { CStr::from_ptr(name).to_bytes() };
+    let name =String::from_utf8(name_cstr.to_vec()).unwrap();
     println!("Hello, {}!", name);
 }
 
