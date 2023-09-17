@@ -1,0 +1,1 @@
+/Users/Reticent/Desktop/Work/ProjectWorkspace/github/go-notes/rust-plus-golang/lib/hello/target/release/libhello.dylib: /Users/Reticent/Desktop/Work/ProjectWorkspace/github/go-notes/rust-plus-golang/lib/hello/src/lib.rs

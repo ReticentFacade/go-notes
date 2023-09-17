@@ -5,6 +5,6 @@ edition = "2018"
 
 [lib]
 name = "hello_user"
-crate-type = ["cdylib"]
+crate-type = ["dylib"]
 
 [dependencies]

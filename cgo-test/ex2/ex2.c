@@ -1,4 +1,4 @@
-#include "_cgo_export.h"
+#include "mylib.h"
 
 int add(int a, int b) {
     int doubleA = doubler(a);
