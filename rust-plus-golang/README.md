@@ -32,7 +32,25 @@ Since `cgo` is being used, Rust functions take C-strings as input.
 ```
 
 ### C-Wrapper (./lib/hello.h)
-Wraps the functions defined in the Rust-section.
+- Wraps the functions defined in the Rust-section.
 
 ### Go Code (./main_dynamic.go)
-Uses the wrapped functions from the C-wrapper-library `(./lib/hello.h)`
+- Uses the wrapped functions from the C-wrapper-library `(./lib/hello.h)`
+
+- Use `cgo` in `main_dynamic.go` by adding this at the top of the file: 
+```
+// #cgo CFLAGS: -I<path-to-dir>/rust-plus-golang/lib
+// #cgo LDFLAGS: -L<path-to-dir>/rust-plus-golang/lib/hello/target/release -lhello
+// #include "hello.h"
+import "C"
+```
+
+- Build it using: 
+```
+go build -ldflags="-L./lib/hello/target/release -lhello"
+```
+
+- Run using:
+```
+./main_dynamic
+```
